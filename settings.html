@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - Pitch Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans transition-colors duration-300">
+
+  <!-- Top Bar -->
+  <div class="flex justify-between items-center px-4 py-4">
+    <button onclick="window.history.back()">
+      <svg class="w-6 h-6" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <h1 class="text-xl font-bold">Settings</h1>
+    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
+    </svg>
+  </div>
+
+  <!-- Settings List -->
+  <div class="bg-gray-200 rounded-2xl mx-5 p-5 shadow-md space-y-6">
+    
+    <a href="mainhome.html"><div class="flex justify-between items-center">
+      <p class="font-semibold">Help & Support</p>
+      <span>&gt;</span>
+    </div></a>
+<br>
+    <a class="pt-3" href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Privacy</p>
+      <span>&gt;</span>
+    </div></a>
+<br>
+    <a href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Security</p>
+      <span>&gt;</span>
+    </div></a>
+<br>
+    <a href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Biometrics</p>
+      <span>&gt;</span>
+    </div></a>
+
+
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Dark Mode</p>
+      <!-- Toggle -->
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="themeToggle" class="sr-only peer">
+        <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition-colors"></div>
+        <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-full"></div>
+      </label>
+    </div>
+<br>
+    <a class="pt5 justify-between" href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Wallet</p>
+      <span>&gt;</span>
+    </div></a>
+<br>
+    <a class="justify-between items-center" href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold">Terms and Policies</p>
+      <span>&gt;</span>
+    </div></a>
+
+<br>
+    <a href="mainhome.html"><div class="flex justify-between items-center">
+      <p class="font-semibold">Switch Account</p>
+      <span>&gt;</span>
+    </div></a>
+<br>
+    <a href="mainhome.html">
+    <div class="flex justify-between items-center">
+      <p class="font-semibold text-red-600">Log Out</p>
+    </div></a>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 w-full bg-black text-white flex justify-around items-center py-3">
+    <a href="mainhome.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20">
+      <path d="M10 2L2 8v10h16V8l-8-6z"/>
+    </svg></a>
+    <a href="search.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20">
+      <path d="M12.9 14.32a8 8 0 111.41-1.41l5.38 5.37-1.42 1.42-5.37-5.38zM8 14a6 6 0 100-12 6 6 0 000 12z"/>
+    </svg></a>
+    <a href="mainhome.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20">
+      <path d="M10 18a1 1 0 01-1-1v-6H5a1 1 0 010-2h4V5a1 1 0 012 0v4h4a1 1 0 010 2h-4v6a1 1 0 01-1 1z"/>
+    </svg></a>
+    <a href="inbox.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20">
+      <path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v2H2V4zm0 4h16v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8z"/>
+    </svg></a>
+    <a href="profile.html"><svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a5 5 0 110 10 5 5 0 010-10zm-7 14a7 7 0 0114 0H3z"/>
+    </svg></a>
+  </nav>
+
+  <script>
+    // Theme toggling logic
+    const toggle = document.getElementById("themeToggle");
+    const htmlEl = document.documentElement;
+
+    // Apply stored theme on page load
+    if (localStorage.getItem("theme") === "dark") {
+      htmlEl.classList.add("dark");
+      document.body.classList.replace("bg-white", "bg-black");
+      document.body.classList.replace("text-black", "text-white");
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        htmlEl.classList.add("dark");
+        document.body.classList.replace("bg-white", "bg-black");
+        document.body.classList.replace("text-black", "text-white");
+        localStorage.setItem("theme", "dark");
+      } else {
+        htmlEl.classList.remove("dark");
+        document.body.classList.replace("bg-black", "bg-white");
+        document.body.classList.replace("text-white", "text-black");
+        localStorage.setItem("theme", "light");
+      }
+    });
+  </script>
+
+</body>
+</html>

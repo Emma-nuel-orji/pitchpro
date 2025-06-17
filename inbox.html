@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inbox - PitchPro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black transition-colors duration-300">
+
+  <!-- Top Bar -->
+  <div class="flex justify-between items-center px-4 py-4">
+    <h1 class="text-2xl font-bold">Inbox</h1>
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M21 21l-4.35-4.35M16 10a6 6 0 11-12 0 6 6 0 0112 0z"/>
+    </svg>
+  </div>
+
+  <!-- Message List -->
+  <div class="px-4 space-y-6 pb-24">
+
+    <!-- Message Item -->
+    <div class="flex items-start gap-3">
+      <img src="https://via.placeholder.com/50x50.png?text=P" class="w-12 h-12 rounded-full" alt="P logo">
+      <div class="flex-1">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-1">
+            <p class="font-semibold">PitchPro Contact Service</p>
+            <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 0a10 10 0 105.917 18.417L10 0z"/></svg>
+          </div>
+          <svg class="w-4 h-4" fill="black" viewBox="0 0 20 20"><path d="M10 2L7 9h6l-3 9"/></svg>
+        </div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Hello pitchpro i got a message from ....</p>
+      </div>
+    </div>
+
+    <!-- User Message -->
+    <div class="flex items-start gap-3">
+      <img src="https://via.placeholder.com/50x50.png?text=JS" class="w-12 h-12 rounded-full" alt="User 1">
+      <div class="flex-1">
+        <div class="flex items-center gap-1">
+          <p class="font-semibold">Jock Stein</p>
+          <svg class="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10 0a10 10 0 105.917 18.417L10 0z"/></svg>
+        </div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Good Morning Mr ........................</p>
+      </div>
+    </div>
+
+    <!-- User Message -->
+    <div class="flex items-start gap-3">
+      <img src="https://via.placeholder.com/50x50.png?text=SH" class="w-12 h-12 rounded-full" alt="User 2">
+      <div class="flex-1">
+        <p class="font-semibold">Stacy Hollowell</p>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Hello Mr Stacy ............................</p>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="flex items-start gap-3">
+      <img src="https://via.placeholder.com/50x50.png?text=P" class="w-12 h-12 rounded-full" alt="P logo">
+      <div class="flex-1">
+        <div class="flex items-center gap-1">
+          <p class="font-bold text-black dark:text-white">NOTIFICATION</p>
+          <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a2 2 0 012 2v2a2 2 0 01-1 1.732V11a2 2 0 01-4 0V7.732A2 2 0 016 6V4a2 2 0 012-2z"/></svg>
+        </div>
+        <p class="text-gray-500 dark:text-gray-400 text-sm">Last warning sending of Digits aren't .....</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 w-full bg-black text-white flex justify-around items-center py-3">
+    <a href="mainhome.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20"><path d="M10 2L2 8v10h16V8l-8-6z"/></svg></a>
+
+    <a href="search.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 111.41-1.41l5.38 5.37-1.42 1.42-5.37-5.38zM8 14a6 6 0 100-12 6 6 0 000 12z"/></svg></a>
+
+    <a href="mainhome.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20"><path d="M10 18a1 1 0 01-1-1v-6H5a1 1 0 010-2h4V5a1 1 0 012 0v4h4a1 1 0 010 2h-4v6a1 1 0 01-1 1z"/></svg></a>
+
+    <a href="inbox.html"><svg class="w-6 h-6 text-blue-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v2H2V4zm0 4h16v8a2 2 0 01-2 2H4a2 2 0 01-2-2V8z"/></svg></a>
+
+    <a href="profile.html"><svg class="w-6 h-6" fill="white" viewBox="0 0 20 20"><path d="M10 2a5 5 0 110 10 5 5 0 010-10zm-7 14a7 7 0 0114 0H3z"/></svg></a>
+  </nav>
+
+  <!-- Dark Mode Script -->
+  <script>
+    const html = document.documentElement;
+    const body = document.body;
+
+    // Apply dark theme if stored
+    if (localStorage.getItem("theme") === "dark") {
+      html.classList.add("dark");
+      body.classList.replace("bg-white", "bg-black");
+      body.classList.replace("text-black", "text-white");
+    } else {
+      html.classList.remove("dark");
+      body.classList.replace("bg-black", "bg-white");
+      body.classList.replace("text-white", "text-black");
+    }
+  </script>
+
+</body>
+</html>
