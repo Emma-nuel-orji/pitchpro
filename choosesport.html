@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Sports</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0 15px 60px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .back-arrow {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .next-btn {
+      padding: 8px 14px;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+
+    .next-btn.active {
+      opacity: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-top: 10px;
+    }
+
+    .sport {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .sport img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid transparent;
+      transition: 0.2s;
+    }
+
+    .sport.selected img {
+      border-color: #007bff;
+    }
+
+    .sport-name {
+      margin-top: 5px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+      background: #111;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .bottom-nav a {
+      color: #999;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    .bottom-nav a.active {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="back-arrow" onclick="history.back()">←</div>
+    Choose Sports
+    <button class="next-btn" id="nextBtn" disabled>Next</button>
+  </div>
+
+  <div class="grid" id="sportsGrid">
+    <!-- Will be populated by JS -->
+  </div>
+
+
+  <script>
+    const sports = [
+      { name: 'Rugby', img: 'https://source.unsplash.com/100x100/?rugby' },
+      { name: 'Swimming', img: 'https://source.unsplash.com/100x100/?swimming' },
+      { name: 'Basketball', img: 'https://source.unsplash.com/100x100/?basketball' },
+      { name: 'Hockey', img: 'https://source.unsplash.com/100x100/?hockey' },
+      { name: 'Racing', img: 'https://source.unsplash.com/100x100/?athletics' },
+      { name: 'Lawn Tennis', img: 'https://source.unsplash.com/100x100/?tennis' },
+      { name: 'Golf', img: 'https://source.unsplash.com/100x100/?golf' },
+      { name: 'Cycling', img: 'https://source.unsplash.com/100x100/?cycling' },
+      { name: 'Cricket', img: 'https://source.unsplash.com/100x100/?cricket' },
+      { name: 'Boxing', img: 'https://source.unsplash.com/100x100/?boxing' }
+    ];
+
+    const grid = document.getElementById('sportsGrid');
+    const selected = new Set();
+    const nextBtn = document.getElementById('nextBtn');
+
+    sports.forEach((sport, index) => {
+      const div = document.createElement('div');
+      div.className = 'sport';
+      div.innerHTML = `
+        <img src="${sport.img}" alt="${sport.name}" />
+        <div class="sport-name">${sport.name}</div>
+      `;
+      div.addEventListener('click', () => {
+        div.classList.toggle('selected');
+        if (selected.has(index)) {
+          selected.delete(index);
+        } else {
+          selected.add(index);
+        }
+        nextBtn.classList.toggle('active', selected.size > 0);
+        nextBtn.disabled = selected.size === 0;
+      });
+      grid.appendChild(div);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const selectedSports = [...selected].map(index => sports[index].name);
+      alert('You selected: ' + selectedSports.join(', '));
+      // Redirect to the next page
+      location.href = 'mainhome.html';
+    });
+  </script>
+
+</body>
+</html>
