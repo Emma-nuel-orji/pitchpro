@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Screen</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      background: #fff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .name .verified {
+      color: #1d9bf0;
+      font-size: 14px;
+      margin-left: 4px;
+    }
+
+    .header-icons i {
+      font-size: 20px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+
+    .chat-box {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .input-bar {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .input-bar input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 60px;
+      background: #222;
+    }
+
+    .bottom-nav i {
+      font-size: 22px;
+      color: white;
+    }
+
+    .bottom-nav i.active {
+      color: #2962ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-left">
+      <i class="bi bi-arrow-left"></i>
+      <div class="avatar">
+        <img src="img/profile/prof8.jpg" alt="Avatar">
+      </div>
+      <div class="name">
+        Jock Stein <i class="bi bi-patch-check-fill verified"></i>
+      </div>
+    </div>
+    <div class="header-icons">
+      <i class="bi bi-telephone-fill"></i>
+      <i class="bi bi-camera-video-fill"></i>
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <!-- You can insert chat bubbles here -->
+  </div>
+
+  <div class="input-bar">
+    <input type="text" placeholder="Type a message..." />
+  </div>
+
+  <div class="bottom-nav">
+    <i class="bi bi-house-door-fill"></i>
+    <i class="bi bi-search"></i>
+    <i class="bi bi-plus-square"></i>
+    <i class="bi bi-envelope-fill active"></i>
+    <i class="bi bi-person"></i>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facial Verification</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #d6d6d6;
+      color: #1f1f1f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      color: #000000;
+      font-size: xx-large;
+    }
+
+    #video {
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      margin-top: 20px;
+      box-shadow: 0 0 10px #444;
+    }
+
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    button, input[type="file"] {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #6200ea;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #3700b3;
+    }
+
+    #feedback {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    #snapshot {
+      margin-top: 15px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 250px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Facial Verification</h2>
+  <h5>Please folloe instruction to confirm your identity</h5>
+  <video id="video" autoplay playsinline></video>
+
+  <div class="controls">
+    <button onclick="capture()">Capture Face</button>
+    <input type="file" accept="image/*" onchange="uploadImage(event)">
+  </div>
+
+  <div id="feedback">Initializing camera...</div>
+  <canvas id="canvas" style="display: none;"></canvas>
+  <img id="snapshot" alt="Captured Image"/>
+
+  <script>
+    const video = document.getElementById('video');
+    const feedback = document.getElementById('feedback');
+    const canvas = document.getElementById('canvas');
+    const snapshot = document.getElementById('snapshot');
+
+    // Start webcam
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+        feedback.innerText = "Camera Ready - Align your face";
+      })
+      .catch(err => {
+        feedback.innerText = "Camera access denied!";
+      });
+
+    function capture() {
+      const context = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageData = canvas.toDataURL('image/png');
+
+      // Show snapshot
+      snapshot.src = imageData;
+      snapshot.style.display = 'block';
+
+      // Save to localStorage
+      localStorage.setItem('capturedFace', imageData);
+      feedback.innerText = "Face Captured!";
+    }
+
+    function uploadImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          snapshot.src = e.target.result;
+          snapshot.style.display = 'block';
+          localStorage.setItem('uploadedFace', e.target.result);
+          feedback.innerText = "Image Uploaded!";
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
