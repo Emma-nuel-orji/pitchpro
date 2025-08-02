@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Pitch Pro - Search</title>
+    <link rel="stylesheet" href="search-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Top Search Bar -->
+        <div class="search-bar-container">
+            <i class="fa-solid fa-search search-icon"></i>
+            <input type="text" placeholder="Search" class="search-input">
+        </div>
+
+        <!-- Search Suggestions/Recent Searches List -->
+        <div class="search-results-list">
+            <div class="search-item">
+                <span class="search-text">Real Madrid Match today</span>
+                <i class="fa-solid fa-times clear-search"></i>
+            </div>
+            <div class="search-item">
+                <img src="https://via.placeholder.com/24" alt="Chelsea Logo" class="item-logo">
+                <span class="search-text">Chelsea Clips</span>
+                <i class="fa-solid fa-times clear-search"></i>
+            </div>
+            <div class="search-item">
+                <img src="https://via.placeholder.com/24" alt="Pep Guardiola" class="item-logo">
+                <span class="search-text">Pep Guardiola Crying clips</span>
+                <i class="fa-solid fa-times clear-search"></i>
+            </div>
+            <!-- Add more search items as needed -->
+        </div>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="bottom-nav-search">
+            <a href="#" class="nav-item">
+                <i class="fa-solid fa-home nav-icon"></i>
+            </a>
+            <a href="clips-page.html" class="nav-item">
+                <i class="fa-solid fa-box nav-icon"></i>
+            </a>
+            <a href="search-page.html" class="nav-item active">
+                <i class="fa-solid fa-search nav-icon"></i>
+            </a>
+            <a href="settings-page.html" class="nav-item">
+                <i class="fa-solid fa-gear nav-icon"></i>
+            </a>
+        </nav>
+    </div>
+
+    <script src="search-page.js"></script>
+</body>
+</html>

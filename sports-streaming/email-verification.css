@@ -1,0 +1,131 @@
+:root {
+    --dark-bg: #000000;
+    --input-bg: #2B2B2B;
+    --text-color: #FFFFFF;
+    --light-text-color: #a0a0a0;
+    --blue-accent: #007BFF;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+}
+
+.verify-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.verify-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.verify-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.back-arrow {
+    position: absolute;
+    left: 0;
+    color: var(--text-color);
+    font-size: 1.5em;
+}
+
+.verification-content {
+    flex-grow: 1; /* Allows this section to push the bottom-section down */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.verification-content h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.verification-content p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: var(--light-text-color);
+    margin: 0 0 40px 0;
+}
+
+.code-input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.code-input {
+    width: 45px;
+    height: 60px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-bg);
+    border-radius: 10px;
+    color: var(--text-color);
+    caret-color: var(--blue-accent); /* Blue cursor */
+}
+
+.code-input:focus {
+    outline: none;
+    border-color: var(--blue-accent);
+}
+
+.resend-text {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+}
+
+.resend-text a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.bottom-section {
+    margin-top: auto; /* Pushes this section to the bottom */
+}
+
+.legal-text {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.legal-text a {
+    color: var(--text-color);
+    text-decoration: underline;
+}
+
+.signup-btn {
+    width: 100%;
+    background-color: var(--blue-accent);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 0;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+}

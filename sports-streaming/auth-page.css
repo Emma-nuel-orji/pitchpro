@@ -1,0 +1,82 @@
+:root {
+    --dark-bg: #000000;
+    --text-color: #FFFFFF;
+    --blue-btn: #007bff; /* A standard blue color */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.auth-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 400px;
+    height: 60vh; /* Adjust height to give proper spacing */
+}
+
+.global-play-btn,
+.signup-btn {
+    background-color: var(--blue-btn);
+    color: var(--text-color);
+    border: none;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.global-play-btn {
+    margin-top: 0;
+    max-width: 180px;
+}
+
+.welcome-text-section {
+    margin-top: auto; /* Pushes content down, creating space at the top */
+    margin-bottom: auto; /* Centers this section vertically */
+}
+
+.welcome-text-section h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.welcome-text-section p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #a0a0a0;
+    padding: 0 10px;
+}
+
+.signup-btn {
+    margin-bottom: 20px;
+}
+
+.signin-text {
+    font-size: 0.9em;
+}
+
+.signin-text p {
+    margin: 0;
+}
+
+.signin-text a {
+    color: var(--blue-btn);
+    text-decoration: none;
+    font-weight: 600;
+}

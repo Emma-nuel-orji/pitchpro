@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cookie Consent</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      /* height: 100vh; */
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+    .text {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    .checkboxes{
+        text-align: left;
+        margin-top: 450px;
+    }
+    .done {
+      margin-top: 100px;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 100%;
+      background: #0f62fe;
+      color: white;
+      border: none;
+      border-radius: 10px;
+     
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <div class="container">
+    <h1 class="logo">MM</h1>
+    <p class="text">
+      A cookie is used by this app to enhance user experience and to analyze performance and traffic on our app. We also share information about your use of our site with our social media, advertising and analytics partners.
+    </p>
+
+    <div class="checkboxes">
+      <label><input type="checkbox" id="accept"> I Accept Cookie</label><br><br>
+      <label><input type="checkbox" id="decline"> I Don’t Accept Cookie</label>
+    </div>
+
+    <button class="done" id="doneBtn">Done</button>
+  </div>
+
+  <script>
+    const accept = document.getElementById('accept');
+    const decline = document.getElementById('decline');
+    const doneBtn = document.getElementById('doneBtn');
+
+    accept.addEventListener('change', () => {
+      if (accept.checked) decline.checked = false;
+    });
+
+    decline.addEventListener('change', () => {
+      if (decline.checked) accept.checked = false;
+    });
+
+    doneBtn.addEventListener('click', () => {
+      if (accept.checked || decline.checked) {
+        localStorage.setItem('cookieAccepted', accept.checked);
+        window.location.href = "loading.html";
+      } else {
+        alert("Please select an option.");
+      }
+    });
+  </script>
+</body>
+</html>

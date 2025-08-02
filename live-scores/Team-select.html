@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Select Your Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .search-bar {
+      background: #333;
+      border: 2px solid white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .search-bar input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .search-bar i {
+      margin-right: 10px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .team-card {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .team-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .team-name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .team-league {
+      font-size: 13px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+
+    .team-icons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .heart-icon {
+      font-size: 20px;
+      color: gray;
+      cursor: pointer;
+    }
+
+    .heart-icon.selected {
+      color: red;
+    }
+
+    .flag-img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      width: 100%;
+      padding: 12px;
+      background-color: #0f62fe;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-size: 18px;
+    }
+
+    .skip {
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="search-bar">
+    <i class="bi bi-search"></i>
+    <input type="text" placeholder="Search" />
+  </div>
+
+  <div class="header">
+    <h2>Select your favorite Team</h2>
+    <span class="skip" onclick="skipSelection()">Skip</span>
+  </div>
+
+  <p class="description">
+    Please click on the heart emoji to select the sport you would love to get updates and news about. These clubs will be added to your favorite tab.
+  </p>
+
+  <div class="team-list" id="teamList"></div>
+
+  <button class="next-btn" onclick="goNext()">Next</button>
+
+  <script>
+    const teams = [
+      { name: "England", league: "EPL | soccer", flag: "https://flagcdn.com/w320/gb-eng.png" },
+      { name: "Spain", league: "Laliga | soccer", flag: "https://flagcdn.com/w320/es.png" },
+      { name: "U.S.A", league: "NBA | Basketball", flag: "https://flagcdn.com/w320/us.png" },
+      { name: "Nigeria", league: "NPL | Basketball", flag: "https://flagcdn.com/w320/ng.png" },
+      { name: "South Africa", league: "SSA | swimming", flag: "https://flagcdn.com/w320/za.png" },
+    ];
+
+    let selectedTeams = [];
+
+    function renderTeams() {
+      const container = document.getElementById("teamList");
+      container.innerHTML = "";
+
+      teams.forEach((team, index) => {
+        const isSelected = selectedTeams.includes(team.name);
+        container.innerHTML += `
+          <div class="team-card" onclick="toggleTeam(${index})">
+            <div class="team-info">
+              <div class="team-name">${team.name}</div>
+              <div class="team-league">${team.league}</div>
+            </div>
+            <div class="team-icons">
+              <i class="bi bi-heart-fill heart-icon ${isSelected ? 'selected' : ''}" id="heart-${index}"></i>
+              <img src="${team.flag}" alt="${team.name}" class="flag-img"/>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function toggleTeam(index) {
+      const teamName = teams[index].name;
+      const heartIcon = document.getElementById(`heart-${index}`);
+
+      if (selectedTeams.includes(teamName)) {
+        selectedTeams = selectedTeams.filter(t => t !== teamName);
+        heartIcon.classList.remove("selected");
+      } else {
+        selectedTeams.push(teamName);
+        heartIcon.classList.add("selected");
+      }
+
+      localStorage.setItem("favoriteTeams", JSON.stringify(selectedTeams));
+    }
+
+    function skipSelection() {
+      window.location.href = "livescore.html"; // Redirect to your main screen
+    }
+
+    function goNext() {
+      localStorage.setItem("favoriteTeams", JSON.stringify(selectedTeams));
+      window.location.href = "age.html"; // Adjust to your next screen
+    }
+
+    // Initial rendering
+    renderTeams();
+  </script>
+
+</body>
+</html>

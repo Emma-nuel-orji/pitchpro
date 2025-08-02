@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Pitch Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="top-app-bar">
+            <i class="fa-regular fa-bell top-icon"></i>
+            <i class="fa-solid fa-search top-icon"></i>
+        </header>
+
+        <div class="date-nav-wrapper">
+            <div class="date-nav">
+                <div class="date-item">Sat<br><span>21 June</span></div>
+                <div class="date-item active">Sun<br><span>22 June</span></div>
+                <div class="date-item">Mon<br><span>23 June</span></div>
+                <div class="date-item">Tue<br><span>24 June</span></div>
+                <div class="date-item">Wed<br><span>25 June</span></div>
+                <div class="date-item">Thu<br><span>26 June</span></div>
+                <div class="date-item">Fri<br><span>27 June</span></div>
+            </div>
+        </div>
+
+        <div class="sport-filters-wrapper">
+            <div class="sport-filters">
+                <button class="filter-btn live-btn">Live</button>
+                <button class="filter-btn active">Football</button>
+                <button class="filter-btn">Volleyball</button>
+                <button class="filter-btn">Tennis</button>
+                <button class="filter-btn">Cricket</button>
+                <button class="filter-btn">Rugby</button>
+                <button class="filter-btn">Car Race</button>
+                <button class="filter-btn">Swimming</button>
+                <button class="filter-btn">Ice Hockey</button>
+            </div>
+        </div>
+
+        <main class="main-content main-content-live-score" data-page="live-score">
+            <section class="league-section">
+                <div class="league-header">
+                    <img src="https://via.placeholder.com/24" alt="FIFA Logo" class="league-logo">
+                    <span class="league-name">FIFA Club World Cup</span>
+                    <span class="league-group">Group E</span>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="River Plate Logo" class="team-logo">
+                            <span class="team-name">River Plate</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Monterrey Logo" class="team-logo">
+                            <span class="team-name">Monterrey</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">1</span>
+                        <span class="team-score">2</span>
+                    </div>
+                </div>
+
+                <div class="match-card upcoming">
+                    <div class="match-time">20:00</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Real Madrid Logo" class="team-logo">
+                            <span class="team-name">Real Madrid</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Pachuca Logo" class="team-logo">
+                            <span class="team-name">Pachuca</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <i class="fa-regular fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="league-section">
+                <div class="league-header">
+                    <img src="https://via.placeholder.com/24" alt="NPFL Logo" class="league-logo">
+                    <span class="league-name">Nigeria Professional Football League</span>
+                    <span class="league-group">Group E</span>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Shooting Star Logo" class="team-logo">
+                            <span class="team-name">Shooting Star</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Enugu Rangers Logo" class="team-logo">
+                            <span class="team-name">Enugu Rangers</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">5</span>
+                        <span class="team-score">1</span>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Enyimba Logo" class="team-logo">
+                            <span class="team-name">Enyimba</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Plateau Utd Logo" class="team-logo">
+                            <span class="team-name">Plateau Utd</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">0</span>
+                        <span class="team-score">1</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <main class="main-content main-content-news hidden" data-page="news">
+            <div class="section-header-news">
+                <h2>Todays Hotline</h2>
+                <div class="notification-badge-wrapper">
+                    <i class="fa-regular fa-bell news-hotline-icon"></i>
+                    <span class="badge">9</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image-container">
+                    <img src="https://via.placeholder.com/120x100" alt="News Image 1" class="news-image">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">United risk defensive woes with Mbeumo pursuit amid Spurs competition</h3>
+                    <span class="news-timestamp">1 hr ago</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image-container">
+                    <img src="https://via.placeholder.com/120x100" alt="News Image 2" class="news-image">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Juventus eyes Jadon Sanoho, Liverpool's Guechi stance, PSG's Zabarnyi bid</h3>
+                    <span class="news-timestamp">8 hr ago</span>
+                </div>
+            </div>
+        </main>
+
+        <main class="main-content main-content-favorite hidden" data-page="favorite">
+            <div class="section-header-favorite">
+                <h2>Favourite</h2>
+            </div>
+
+            <div class="favorite-card">
+                <div class="fav-team-info">
+                    <img src="https://via.placeholder.com/30" alt="Man United Logo" class="fav-team-logo">
+                    <span class="fav-team-name">Man United</span>
+                </div>
+                <i class="fa-solid fa-heart fav-heart-icon"></i>
+            </div>
+
+            <div class="favorite-card">
+                <div class="fav-team-info">
+                    <img src="https://via.placeholder.com/30" alt="Galatasaray Logo" class="fav-team-logo">
+                    <span class="fav-team-name">Galatasaray</span>
+                </div>
+                <i class="fa-solid fa-heart fav-heart-icon"></i>
+            </div>
+
+            <div class="favorite-card">
+                <div class="fav-team-info">
+                    <img src="https://via.placeholder.com/30" alt="Borussia Dortmund Logo" class="fav-team-logo">
+                    <span class="fav-team-name">Borussia Dortmund</span>
+                </div>
+                <i class="fa-solid fa-heart fav-heart-icon"></i>
+            </div>
+
+            <div class="favorite-card">
+                <div class="fav-team-info">
+                    <img src="https://via.placeholder.com/30" alt="Inter Miami Logo" class="fav-team-logo">
+                    <span class="fav-team-name">inter Miami</span>
+                </div>
+                <i class="fa-solid fa-heart fav-heart-icon"></i>
+            </div>
+
+            <div class="favorite-card">
+                <div class="fav-team-info">
+                    <img src="https://via.placeholder.com/30" alt="Lakers Logo" class="fav-team-logo">
+                    <span class="fav-team-name">Lakers</span>
+                </div>
+                <i class="fa-solid fa-heart fav-heart-icon"></i>
+            </div>
+
+            </main>
+
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active" data-page="live-score">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-futbol nav-icon"></i>
+                </div>
+                <span class="nav-text">Live score</span>
+            </a>
+            <a href="#" class="nav-item" data-page="news">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-newspaper nav-icon"></i>
+                </div>
+                <span class="nav-text">News</span>
+            </a>
+            <a href="#" class="nav-item" data-page="favorite">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-heart nav-icon"></i>
+                </div>
+                <span class="nav-text">Favorite</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Pitch Pro - News</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="top-app-bar">
+            <i class="fa-regular fa-bell top-icon"></i>
+            <i class="fa-solid fa-search top-icon"></i>
+        </header>
+
+        <div class="date-nav-wrapper">
+            <div class="date-nav">
+                <div class="date-item">Sat<br><span>21 June</span></div>
+                <div class="date-item active">Sun<br><span>22 June</span></div>
+                <div class="date-item">Mon<br><span>23 June</span></div>
+                <div class="date-item">Tue<br><span>24 June</span></div>
+                <div class="date-item">Wed<br><span>25 June</span></div>
+                <div class="date-item">Thu<br><span>26 June</span></div>
+                <div class="date-item">Fri<br><span>27 June</span></div>
+            </div>
+        </div>
+
+        <div class="sport-filters-wrapper">
+            <div class="sport-filters">
+                <button class="filter-btn live-btn">Live</button>
+                <button class="filter-btn active">Football</button>
+                <button class="filter-btn">Volleyball</button>
+                <button class="filter-btn">Tennis</button>
+                <button class="filter-btn">Cricket</button>
+                <button class="filter-btn">Rugby</button>
+                <button class="filter-btn">Car Race</button>
+                <button class="filter-btn">Swimming</button>
+                <button class="filter-btn">Ice Hockey</button>
+            </div>
+        </div>
+
+        <main class="main-content main-content-news">
+            <div class="section-header-news">
+                <h2>Todays Hotline</h2>
+                <div class="notification-badge-wrapper">
+                    <i class="fa-regular fa-bell news-hotline-icon"></i>
+                    <span class="badge">9</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image-container">
+                    <img src="https://via.placeholder.com/120x100" alt="News Image 1" class="news-image">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">United risk defensive woes with Mbeumo pursuit amid Spurs competition</h3>
+                    <span class="news-timestamp">1 hr ago</span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-image-container">
+                    <img src="https://via.placeholder.com/120x100" alt="News Image 2" class="news-image">
+                </div>
+                <div class="news-content">
+                    <h3 class="news-title">Juventus eyes Jadon Sanoho, Liverpool's Guechi stance, PSG's Zabarnyi bid</h3>
+                    <span class="news-timestamp">8 hr ago</span>
+                </div>
+            </div>
+
+            </main>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-futbol nav-icon"></i>
+                </div>
+                <span class="nav-text">Live score</span>
+            </a>
+            <a href="#" class="nav-item active">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-newspaper nav-icon"></i>
+                </div>
+                <span class="nav-text">News</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-heart nav-icon"></i>
+                </div>
+                <span class="nav-text">Favorite</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Pitch Pro - Live Scores</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="date-nav-wrapper">
+            <div class="date-nav">
+                <div class="date-item">Sat<br><span>21 June</span></div>
+                <div class="date-item active">Sun<br><span>22 June</span></div>
+                <div class="date-item">Mon<br><span>23 June</span></div>
+                <div class="date-item">Tue<br><span>24 June</span></div>
+                <div class="date-item">Wed<br><span>25 June</span></div>
+                <div class="date-item">Thu<br><span>26 June</span></div>
+                <div class="date-item">Fri<br><span>27 June</span></div>
+            </div>
+        </div>
+
+        <div class="sport-filters-wrapper">
+            <div class="sport-filters">
+                <button class="filter-btn live-btn">Live</button>
+                <button class="filter-btn active">Football</button>
+                <button class="filter-btn">Volleyball</button>
+                <button class="filter-btn">Tennis</button>
+                <button class="filter-btn">Cricket</button>
+                <button class="filter-btn">Rugby</button>
+                <button class="filter-btn">Car Race</button>
+                <button class="filter-btn">Swimming</button>
+                <button class="filter-btn">Ice Hockey</button>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <section class="league-section">
+                <div class="league-header">
+                    <img src="https://via.placeholder.com/24" alt="FIFA Logo" class="league-logo">
+                    <span class="league-name">FIFA Club World Cup</span>
+                    <span class="league-group">Group E</span>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="River Plate Logo" class="team-logo">
+                            <span class="team-name">River Plate</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Monterrey Logo" class="team-logo">
+                            <span class="team-name">Monterrey</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">1</span>
+                        <span class="team-score">2</span>
+                    </div>
+                </div>
+
+                <div class="match-card upcoming">
+                    <div class="match-time">20:00</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Real Madrid Logo" class="team-logo">
+                            <span class="team-name">Real Madrid</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Pachuca Logo" class="team-logo">
+                            <span class="team-name">Pachuca</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <i class="fa-regular fa-heart favorite-icon"></i>
+                    </div>
+                </div>
+            </section>
+
+            <section class="league-section">
+                <div class="league-header">
+                    <img src="https://via.placeholder.com/24" alt="NPFL Logo" class="league-logo">
+                    <span class="league-name">Nigeria Professional Football League</span>
+                    <span class="league-group">Group E</span>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Shooting Star Logo" class="team-logo">
+                            <span class="team-name">Shooting Star</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Enugu Rangers Logo" class="team-logo">
+                            <span class="team-name">Enugu Rangers</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">5</span>
+                        <span class="team-score">1</span>
+                    </div>
+                </div>
+
+                <div class="match-card">
+                    <div class="match-status ft">FT</div>
+                    <div class="team-info">
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Enyimba Logo" class="team-logo">
+                            <span class="team-name">Enyimba</span>
+                        </div>
+                        <div class="team">
+                            <img src="https://via.placeholder.com/20" alt="Plateau Utd Logo" class="team-logo">
+                            <span class="team-name">Plateau Utd</span>
+                        </div>
+                    </div>
+                    <div class="score">
+                        <span class="team-score">0</span>
+                        <span class="team-score">1</span>
+                    </div>
+                </div>
+            </section>
+            </main>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-futbol nav-icon"></i>
+                </div>
+                <span class="nav-text">Live score</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-newspaper nav-icon"></i>
+                </div>
+                <span class="nav-text">News</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon-wrapper">
+                    <i class="fa-solid fa-heart nav-icon"></i>
+                </div>
+                <span class="nav-text">Favorite</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Score Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <span class="icon">🔔</span>
+    <span class="icon">🔍</span>
+    <div class="dates-scroll">
+      <div class="date selected">Sat<br>21 June</div>
+      <div class="date">Sun<br>22 June</div>
+      <div class="date">Mon<br>23 June</div>
+      <div class="date">Tue<br>24 June</div>
+      <div class="date">Wed<br>25 June</div>
+    </div>
+  </div>
+
+  <div class="sports-scroll">
+    <div class="pill selected">Football</div>
+    <div class="pill">Volleyball</div>
+    <div class="pill">Tennis</div>
+    <div class="pill">Cricket</div>
+    <div class="pill">Rugby</div>
+    <div class="pill">Car Race</div>
+    <div class="pill">Swimming</div>
+    <div class="pill">Ice Hockey</div>
+  </div>
+
+  <div class="matches">
+    <section class="league">
+      <h3>FIFA Club World Cup</h3>
+      <p>Group E</p>
+      <div class="match-card">
+        <div class="status">FT</div>
+        <div class="teams">
+          <div><span>🏴‍☠️</span> River Plate</div>
+          <div><span>🟦</span> Monterrey</div>
+        </div>
+        <div class="score">1 - 2</div>
+      </div>
+
+      <div class="match-card">
+        <div class="status">20:00</div>
+        <div class="teams">
+          <div><span>⚪</span> Real Madrid</div>
+          <div><span>🟣</span> Pachuca</div>
+        </div>
+        <div class="fav">♡</div>
+      </div>
+    </section>
+
+    <section class="league">
+      <h3>Nigeria Professional Football League</h3>
+      <p>Group E</p>
+      <div class="match-card">
+        <div class="status">FT</div>
+        <div class="teams">
+          <div><span>🟪</span> Shooting Star</div>
+          <div><span>🔴</span> Enugu Rangers</div>
+        </div>
+        <div class="score">5 - 1</div>
+      </div>
+
+      <div class="match-card">
+        <div class="status">FT</div>
+        <div class="teams">
+          <div><span>🔵</span> Enyimba</div>
+          <div><span>🟢</span> Plateau Utd</div>
+        </div>
+        <div class="score">0 - 1</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="nav-item active">⚽ Live score</div>
+    <div class="nav-item">📰 News</div>
+    <div class="nav-item">❤️ Favorite</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facial Version Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0a0a;
+      color: #fff;
+    }
+
+    .tab-bar {
+      display: flex;
+      justify-content: space-around;
+      background-color: #111;
+      border-bottom: 1px solid #333;
+    }
+
+    .tab {
+      padding: 15px 0;
+      width: 100%;
+      text-align: center;
+      color: #aaa;
+      cursor: pointer;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .tab.active {
+      color: #fff;
+      border-bottom: 2px solid #9147ff;
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(145, 71, 255, 0.1);
+    }
+
+    .card h4 {
+      margin: 0 0 5px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    @media screen and (min-width: 600px) {
+      .card {
+        max-width: 500px;
+        margin: 15px auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tab-bar">
+    <div class="tab active" onclick="switchTab('live')">Live Scores</div>
+    <div class="tab" onclick="switchTab('news')">News</div>
+    <div class="tab" onclick="switchTab('favorites')">Favorites</div>
+  </div>
+
+  <div class="content" id="tab-content">
+
+    
+
+    <div class="card">
+      <h4>Real Madrid vs Barcelona</h4>
+      <p>Score: 2 - 1 | 78'</p>
+    </div>
+    <div class="card">
+      <h4>Man City vs Arsenal</h4>
+      <p>Score: 1 - 1 | Half Time</p>
+    </div>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const content = document.getElementById('tab-content');
+
+    const tabData = {
+      live: `
+        <div class="card">
+          <h4>Real Madrid vs Barcelona</h4>
+          <p>Score: 2 - 1 | 78'</p>
+        </div>
+        <div class="card">
+          <h4>Man City vs Arsenal</h4>
+          <p>Score: 1 - 1 | Half Time</p>
+        </div>
+      `,
+      news: `
+        <div class="card">
+          <h4>Transfer News</h4>
+          <p>Lionel Messi rumored to return to Barcelona...</p>
+        </div>
+        <div class="card">
+          <h4>Coach Update</h4>
+          <p>Jose Mourinho joins Bayern Munich as head coach</p>
+        </div>
+      `,
+      favorites: `
+        <div class="card">
+          <h4>Man United vs Chelsea</h4>
+          <p>Starts at 7:00 PM</p>
+        </div>
+        <div class="card">
+          <h4>Liverpool vs PSG</h4>
+          <p>Starts at 9:00 PM</p>
+        </div>
+      `
+    };
+
+    function switchTab(tabName) {
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.querySelector(`.tab[onclick*="${tabName}"]`).classList.add('active');
+      content.innerHTML = tabData[tabName];
+    }
+  </script>
+
+</body>
+</html> -->

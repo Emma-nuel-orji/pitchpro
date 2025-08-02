@@ -1,0 +1,997 @@
+/* Add this class to your CSS */
+.hidden {
+    display: none !important;
+}
+
+/* --- New: Styles for Favorite Section --- */
+.section-header-favorite {
+    margin-bottom: 20px;
+    padding: 0 5px; /* Slight padding to align with cards */
+}
+
+.section-header-favorite h2 {
+    font-size: 1.3em;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.favorite-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+
+.fav-team-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows it to take up available space */
+}
+
+.fav-team-logo {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.fav-team-name {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.fav-heart-icon {
+    font-size: 1.4em;
+    color: var(--red-accent); /* Red for active favorite heart */
+    cursor: pointer;
+}
+
+/* Ensure the top sticky elements have correct z-index */
+.top-app-bar {
+    z-index: 11;
+}
+
+.date-nav-wrapper {
+    z-index: 10;
+}
+
+.sport-filters-wrapper {
+    z-index: 9;
+}
+
+
+
+/* --- Main Content Area --- */
+.main-content {
+    flex-grow: 1;
+    padding: 15px;
+}
+
+.league-section {
+    margin-bottom: 20px;
+}
+
+.league-header {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    margin-bottom: 2px; /* Small gap between header and first match card */
+}
+
+.league-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    border-radius: 50%; /* If logos are circular */
+}
+
+.league-name {
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.league-group {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    margin-left: 8px;
+}
+
+.match-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 15px;
+    margin-bottom: 2px; /* Small gap between match cards */
+    border-radius: 0; /* No rounding by default, for stacking */
+}
+
+.match-card:last-of-type {
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners for the last card in a section */
+    margin-bottom: 15px; /* More space before the next league section */
+}
+
+/* Specific styling for the last match card of a league to round corners */
+.league-section > .match-card:last-child {
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 20px; /* Space before next league section */
+}
+
+/* If there's only one match card in a section, round all corners */
+.league-section > .match-card:first-child:last-child {
+    border-radius: 8px;
+}
+
+.match-status {
+    background-color: #4CAF50; /* Example green for 'Live' */
+    color: var(--text-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: 600;
+    min-width: 40px; /* Ensure consistent width */
+    text-align: center;
+}
+
+.match-status.ft {
+    background-color: #616161; /* Grey for 'FT' */
+}
+
+.match-time {
+    font-size: 1em;
+    font-weight: 600;
+    min-width: 40px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.team-info {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.team:last-child {
+    margin-bottom: 0;
+}
+
+.team-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.team-name {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.score .team-score {
+    margin-bottom: 5px;
+}
+
+.score .team-score:last-child {
+    margin-bottom: 0;
+}
+
+.favorite-icon {
+    font-size: 1.2em;
+    color: var(--light-text-color);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --dark-bg: #1A1A1A;
+    --card-bg: #2B2B2B;
+    --text-color: #FFFFFF;
+    --light-text-color: #AAAAAA;
+    --red-accent: #FF0000;
+    --button-bg: #3A3A3A;
+    --active-nav-bg: #FFFFFF;
+    --active-nav-icon-color: #1A1A1A;
+    --hotline-badge-bg: #E74C3C; /* Red for the notification badge */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 70px; /* Space for fixed bottom nav */
+    box-sizing: border-box;
+}
+
+/* --- New: Top App Bar --- */
+.top-app-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--dark-bg);
+    position: sticky;
+    top: 0;
+    z-index: 11; /* Higher than date-nav-wrapper */
+    height: 50px; /* Give it a fixed height */
+}
+
+.top-icon {
+    font-size: 1.4em;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+
+/* --- Date Navigation (Existing, updated top for sticky behavior) --- */
+.date-nav-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--dark-bg);
+    border-bottom: 1px solid var(--card-bg); /* Subtle separator */
+    box-sizing: border-box;
+    position: sticky;
+    top: 50px; /* Adjusted: Below the new top-app-bar height */
+    z-index: 10;
+}
+
+.date-nav {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.date-nav::-webkit-scrollbar {
+    display: none;
+}
+.date-nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.date-item {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: var(--light-text-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    scroll-snap-align: center;
+}
+
+.date-item span {
+    font-weight: 600;
+    display: block;
+    font-size: 1.1em;
+    margin-top: 2px;
+}
+
+.date-item.active {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* --- Sport Filters (Existing, updated top for sticky behavior) --- */
+.sport-filters-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--dark-bg);
+    border-bottom: 1px solid var(--card-bg);
+    box-sizing: border-box;
+    position: sticky;
+    top: 120px; /* Adjusted: Below date-nav-wrapper + top-app-bar (50px + 70px) */
+    z-index: 9;
+}
+
+.sport-filters {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+.sport-filters::-webkit-scrollbar {
+    display: none;
+}
+.sport-filters {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.filter-btn {
+    flex: 0 0 auto;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn.active {
+    background-color: var(--red-accent);
+    color: var(--text-color);
+}
+
+.filter-btn.live-btn {
+    background-color: var(--red-accent);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* --- Main Content Area (Updated for News) --- */
+/* Base main-content styles from previous code remain */
+.main-content {
+    flex-grow: 1;
+    padding: 15px;
+    padding-top: 20px; /* Add some space above the first section header */
+}
+
+/* New: Styles for News Section */
+.main-content-news {
+    /* No specific styles needed here, just for clarity to separate from previous live-scores */
+}
+
+.section-header-news {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 5px; /* Slight padding to align with cards */
+}
+
+.section-header-news h2 {
+    font-size: 1.3em;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.notification-badge-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.news-hotline-icon {
+    font-size: 1.4em;
+    color: var(--text-color);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--hotline-badge-bg);
+    color: var(--text-color);
+    font-size: 0.7em;
+    padding: 3px 6px;
+    border-radius: 50%;
+    line-height: 1;
+    min-width: 10px; /* Ensure it's circular even for single digits */
+    text-align: center;
+    border: 1px solid var(--dark-bg); /* To make it stand out from background */
+}
+
+.news-card {
+    display: flex;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Ensures image corners are rounded with card */
+}
+
+.news-image-container {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 120px; /* Fixed width for the image container */
+    height: 100px; /* Fixed height for consistency */
+    overflow: hidden; /* To handle image aspect ratio */
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+    display: block; /* Remove extra space below image */
+}
+
+.news-content {
+    flex-grow: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes timestamp to bottom */
+}
+
+.news-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.news-timestamp {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    text-align: right; /* Aligns timestamp to the right as in your design */
+}
+
+/* --- Bottom Navigation (Updated active state for News) --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 0.75em;
+    transition: color 0.2s ease;
+    flex: 1;
+}
+
+.nav-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.nav-item .nav-icon {
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-item.active .nav-icon-wrapper {
+    background-color: var(--active-nav-bg);
+}
+
+.nav-item.active .nav-icon {
+    color: var(--active-nav-icon-color);
+}
+
+.nav-item.active .nav-text {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* General button reset */
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+
+:root {
+    --dark-bg: #1A1A1A;
+    --card-bg: #2B2B2B;
+    --text-color: #FFFFFF;
+    --light-text-color: #AAAAAA;
+    --red-accent: #FF0000;
+    --button-bg: #3A3A3A;
+    --active-nav-bg: #FFFFFF;
+    --active-nav-icon-color: #1A1A1A;
+    --hotline-badge-bg: #E74C3C; /* Red for the notification badge */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 70px; /* Space for fixed bottom nav */
+    box-sizing: border-box;
+}
+
+/* --- New: Top App Bar --- */
+.top-app-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--dark-bg);
+    position: sticky;
+    top: 0;
+    z-index: 11; /* Higher than date-nav-wrapper */
+    height: 50px; /* Give it a fixed height */
+}
+
+.top-icon {
+    font-size: 1.4em;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+
+/* --- Date Navigation (Existing, updated top for sticky behavior) --- */
+.date-nav-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--dark-bg);
+    border-bottom: 1px solid var(--card-bg); /* Subtle separator */
+    box-sizing: border-box;
+    position: sticky;
+    top: 50px; /* Adjusted: Below the new top-app-bar height */
+    z-index: 10;
+}
+
+.date-nav {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+}
+
+.date-nav::-webkit-scrollbar {
+    display: none;
+}
+.date-nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.date-item {
+    flex: 0 0 auto;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 8px;
+    color: var(--light-text-color);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    scroll-snap-align: center;
+}
+
+.date-item span {
+    font-weight: 600;
+    display: block;
+    font-size: 1.1em;
+    margin-top: 2px;
+}
+
+.date-item.active {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+/* --- Sport Filters (Existing, updated top for sticky behavior) --- */
+.sport-filters-wrapper {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--dark-bg);
+    border-bottom: 1px solid var(--card-bg);
+    box-sizing: border-box;
+    position: sticky;
+    top: 120px; /* Adjusted: Below date-nav-wrapper + top-app-bar (50px + 70px) */
+    z-index: 9;
+}
+
+.sport-filters {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 15px;
+    gap: 10px;
+}
+
+.sport-filters::-webkit-scrollbar {
+    display: none;
+}
+.sport-filters {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.filter-btn {
+    flex: 0 0 auto;
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn.active {
+    background-color: var(--red-accent);
+    color: var(--text-color);
+}
+
+.filter-btn.live-btn {
+    background-color: var(--red-accent);
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* --- Main Content Area (Updated for News) --- */
+/* Base main-content styles from previous code remain */
+.main-content {
+    flex-grow: 1;
+    padding: 15px;
+    padding-top: 20px; /* Add some space above the first section header */
+}
+
+/* New: Styles for News Section */
+.main-content-news {
+    /* No specific styles needed here, just for clarity to separate from previous live-scores */
+}
+
+.section-header-news {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 5px; /* Slight padding to align with cards */
+}
+
+.section-header-news h2 {
+    font-size: 1.3em;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.notification-badge-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.news-hotline-icon {
+    font-size: 1.4em;
+    color: var(--text-color);
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--hotline-badge-bg);
+    color: var(--text-color);
+    font-size: 0.7em;
+    padding: 3px 6px;
+    border-radius: 50%;
+    line-height: 1;
+    min-width: 10px; /* Ensure it's circular even for single digits */
+    text-align: center;
+    border: 1px solid var(--dark-bg); /* To make it stand out from background */
+}
+
+.news-card {
+    display: flex;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden; /* Ensures image corners are rounded with card */
+}
+
+.news-image-container {
+    flex-shrink: 0; /* Prevent image from shrinking */
+    width: 120px; /* Fixed width for the image container */
+    height: 100px; /* Fixed height for consistency */
+    overflow: hidden; /* To handle image aspect ratio */
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+    display: block; /* Remove extra space below image */
+}
+
+.news-content {
+    flex-grow: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes timestamp to bottom */
+}
+
+.news-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.news-timestamp {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    text-align: right; /* Aligns timestamp to the right as in your design */
+}
+
+/* --- Bottom Navigation (Updated active state for News) --- */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--dark-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-size: 0.75em;
+    transition: color 0.2s ease;
+    flex: 1;
+}
+
+.nav-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.nav-item .nav-icon {
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    transition: color 0.3s ease;
+}
+
+.nav-item.active .nav-icon-wrapper {
+    background-color: var(--active-nav-bg);
+}
+
+.nav-item.active .nav-icon {
+    color: var(--active-nav-icon-color);
+}
+
+.nav-item.active .nav-text {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* General button reset */
+button {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+.top-bar, .sports-scroll, .bottom-nav {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  background: #222;
+}
+
+.top-bar .icon {
+  font-size: 18px;
+}
+
+.dates-scroll {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.date {
+  padding: 6px 12px;
+  text-align: center;
+  border-radius: 10px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.date.selected {
+  color: #fff;
+  font-weight: bold;
+  background: #000;
+}
+
+.sports-scroll {
+  background: #000;
+  padding: 12px 10px;
+  overflow-x: scroll;
+}
+
+.pill {
+  padding: 8px 16px;
+  background: #444;
+  border-radius: 20px;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.pill.selected {
+  background: white;
+  color: black;
+  font-weight: bold;
+}
+
+.matches {
+  padding: 16px;
+}
+
+.league {
+  margin-bottom: 30px;
+}
+
+.league h3 {
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.match-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-card .status {
+  font-weight: bold;
+  color: #ccc;
+  width: 40px;
+}
+
+.match-card .teams {
+  flex: 1;
+  padding: 0 10px;
+}
+
+.match-card .teams div {
+  margin: 2px 0;
+}
+
+.match-card .score,
+.match-card .fav {
+  font-weight: bold;
+  color: white;
+  font-size: 16px;
+  min-width: 50px;
+  text-align: right;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px;
+  background: #000;
+  border-top: 1px solid #333;
+}
+
+.nav-item {
+  padding: 10px 14px;
+  border-radius: 30px;
+  background: transparent;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.nav-item.active {
+  background: white;
+  color: black;
+  font-weight: bold;
+} */

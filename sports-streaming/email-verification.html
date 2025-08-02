@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Pitch Pro - Verify Email</title>
+    <link rel="stylesheet" href="email-verification.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="verify-container">
+        <header class="verify-header">
+            <a href="#" class="back-arrow"><i class="fa-solid fa-arrow-left"></i></a>
+            <h2>Sign Up</h2>
+        </header>
+
+        <div class="verification-content">
+            <h1>Verify your email</h1>
+            <p>Please enter the 6-digit code sent to your email address</p>
+
+            <div class="code-input-container">
+                <input type="text" maxlength="1" class="code-input" id="code-1">
+                <input type="text" maxlength="1" class="code-input" id="code-2">
+                <input type="text" maxlength="1" class="code-input" id="code-3">
+                <input type="text" maxlength="1" class="code-input" id="code-4">
+                <input type="text" maxlength="1" class="code-input" id="code-5">
+                <input type="text" maxlength="1" class="code-input" id="code-6">
+            </div>
+
+            <div class="resend-text">
+                <p>Didn't receive the code? <a href="#">Resend</a></p>
+            </div>
+        </div>
+
+        <div class="bottom-section">
+            <div class="legal-text">
+                <p>
+                    By tapping Sign up, you agree to our <a href="#">Terms of Service</a> and are acknowledging our <a href="#">Privacy Notice</a> applies
+                </p>
+            </div>
+            <button type="submit" class="signup-btn">Sign up</button>
+        </div>
+    </div>
+
+    <script src="email-verification.js"></script>
+</body>
+</html>
