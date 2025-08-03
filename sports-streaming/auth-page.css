@@ -65,10 +65,12 @@ body {
 
 .signup-btn {
     margin-bottom: 20px;
+    list-style-type: none;
 }
 
 .signin-text {
     font-size: 0.9em;
+    
 }
 
 .signin-text p {
