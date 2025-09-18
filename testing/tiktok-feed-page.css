@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  /* height: 100%; */
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.video-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: #000;
+}
+
+.video-bg {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Right icons */
+.right-icons {
+  position: absolute;
+  right: 15px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  color: white;
+}
+
+.icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 50%;
+  margin-bottom: 5px;
+}
+
+.heart {
+  background: red;
+}
+
+.comment {
+  background: black;
+}
+
+.share {
+  background: black;
+}
+
+/* User info and follow button */
+.user-info {
+  position: absolute;
+  bottom: 100px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.follow-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.nav-item img {
+  width: 28px;
+  height: 28px;
+}
+
+
+
+
+/* Bottom Nav */
+/* .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.nav-item img {
+  width: 28px;
+  height: 28px;
+} */

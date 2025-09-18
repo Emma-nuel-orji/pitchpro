@@ -1,0 +1,344 @@
+:root {
+    --dark-bg: #000000;
+    --sheet-bg: #2B2B2B;
+    --text-color: #FFFFFF;
+    --light-text-color: #AAAAAA;
+    --blue-accent: #007BFF;
+    --red-accent: #FF0000;
+    --icon-bg-circle: #3A3A3A;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+.main-page-content {
+    padding: 20px;
+    text-align: center;
+    color: var(--light-text-color);
+}
+
+/* --- Utility Class for Hiding Elements --- */
+.hidden {
+    display: none!important;
+}
+
+/* --- Share Sheet Backdrop --- */
+.share-sheet-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+}
+
+/* --- Share Sheet Container (Bottom Sheet) --- */
+.share-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 90vh; /* Limit max height */
+    background-color: var(--sheet-bg);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0px -3px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%); /* Hidden by default */
+    transition: transform 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    overflow: hidden; /* Ensures content inside respects border-radius */
+}
+
+.share-sheet.active {
+    transform: translateY(0); /* Slide up */
+}
+
+.sheet-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    min-height: 40px; /* Ensure space for drag handle */
+}
+
+.drag-handle {
+    width: 40px;
+    height: 5px;
+    background-color: var(--light-text-color);
+    border-radius: 10px;
+    cursor: grab;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    padding: 5px;
+}
+
+.sheet-content {
+    flex-grow: 1;
+    padding: 0 15px 20px 15px; /* Padding for content, more at bottom */
+    overflow-y: auto; /* Enable scrolling for content if it exceeds height */
+    -webkit-overflow-scrolling: touch;
+}
+
+.sheet-content::-webkit-scrollbar {
+    display: none;
+}
+.sheet-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* --- Search Bar --- */
+.search-bar-share-sheet {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-bg);
+    border-radius: 30px;
+    padding: 8px 15px;
+    margin-bottom: 20px;
+}
+.search-bar-share-sheet i {
+    color: var(--light-text-color);
+    font-size: 1.1em;
+    margin-right: 10px;
+}
+.search-bar-share-sheet.search-input {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    font-size: 0.9em;
+    padding: 5px 0;
+}
+
+.search-bar-share-sheet.search-input::placeholder {
+    color: var(--light-text-color);
+}
+
+.search-bar-share-sheet.clear-search-icon {
+    color: var(--light-text-color);
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* --- Section Titles --- */
+.section-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* --- Send To List (Horizontal Scroll) --- */
+.send-to-list {
+    display: flex;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 15px; /* Space for potential scrollbar */
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.send-to-list::-webkit-scrollbar {
+    display: none;
+}
+.send-to-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.send-to-item {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 70px; /* Fixed width for each item */
+}
+
+.user-avatar-share {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 5px;
+}
+
+.send-to-item span {
+    font-size: 0.8em;
+    color: var(--light-text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* --- Video Preview --- */
+.video-preview-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.share-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay-share {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.video-overlay-share.playing {
+    background-color: transparent;
+}
+
+.play-pause-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 3em;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.play-icon,.pause-icon {
+    transition: opacity 0.3s ease;
+}
+
+.video-overlay-share.playing.play-icon {
+    opacity: 0;
+}
+.pause-icon {
+    opacity: 0;
+}
+.video-overlay-share.playing.pause-icon {
+    opacity: 1;
+}
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: var(--text-color);
+    font-size: 1.2em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* --- Share Buttons Grid --- */
+.share-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.share-action-btn {
+    background-color: var(--icon-bg-circle);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.share-action-btn:hover {
+    background-color: #4A4A4A;
+}
+
+.share-action-btn i {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.share-action-btn[data-action="facebook"] i { color: #1877F2; }
+.share-action-btn[data-action="whatsapp"] i { color: #25D366; }
+.share-action-btn[data-action="status"] i { color: #25D366; }
+
+/* --- Trigger Button for Share Sheet (for testing) --- */
+.show-share-sheet-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--blue-accent);
+    color: var(--text-color);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 101;
+}
