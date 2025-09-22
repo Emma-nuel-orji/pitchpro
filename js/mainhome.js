@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoOverlays = document.querySelectorAll('.video-overlay');
     const heartActionItems = document.querySelectorAll('.heart-action-item');
     const heartIcons = document.querySelectorAll('.heart-icon');
+    const heartCounts = document.querySelectorAll('.heart-action-item.action-count');
     const commentActionItems = document.querySelectorAll('.comment-action-item');
+    const commentCounts = document.querySelectorAll('.comment-action-item.action-count');
     const shareActionItems = document.querySelectorAll('.share-action-item');
     const topNavLinks = document.querySelectorAll('.top-nav-tiktok.top-nav-link');
     const bottomNavItems = document.querySelectorAll('.bottom-nav-tiktok.nav-item');
@@ -38,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (playPromise!== undefined) {
                     playPromise.then(() => {
                         videoOverlays[index].classList.remove('paused');
+                        video.muted = false; // Unmute on initial play
                     }).catch(error => {
                         video.muted = true;
                         video.play();
@@ -72,12 +75,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const video = feedVideos[index];
             const heartIcon = heartIcons[index];
             const heartAnimationContainer = videoSlides[index].querySelector('.heart-animation-container');
+            let heartCountElement = heartCounts[index];
 
             if (currentTime - lastTapTime < DOUBLE_TAP_THRESHOLD) {
                 // Double tap detected
                 heartIcon.classList.add('liked');
                 heartIcon.classList.remove('fa-regular');
                 heartIcon.classList.add('fa-solid');
+                
+                // Increment counter
+                let currentCount = parseInt(heartCountElement.textContent.replace(/,/g, ''));
+                heartCountElement.textContent = (currentCount + 1).toLocaleString();
 
                 const animatedHeart = document.createElement('i');
                 animatedHeart.classList.add('fa-solid', 'fa-heart', 'animated-heart');
@@ -107,15 +115,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Static Heart Icon Click ---
     heartActionItems.forEach(item => {
         const heartIcon = item.querySelector('.heart-icon');
+        const heartCountElement = item.querySelector('.action-count');
         heartIcon.addEventListener('click', () => {
             heartIcon.classList.toggle('liked');
+            let currentCount = parseInt(heartCountElement.textContent.replace(/,/g, ''));
             if (heartIcon.classList.contains('liked')) {
                 heartIcon.classList.remove('fa-regular');
                 heartIcon.classList.add('fa-solid');
+                currentCount++;
             } else {
                 heartIcon.classList.remove('fa-solid');
                 heartIcon.classList.add('fa-regular');
+                currentCount--;
             }
+            heartCountElement.textContent = currentCount.toLocaleString();
         });
     });
 
@@ -166,6 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 commentsList.appendChild(newComment);
                 commentInput.value = '';
                 commentsList.scrollTop = commentsList.scrollHeight;
+
+                // Increment comment count
+                let commentCountElement = commentCounts[currentVideoIndex];
+                let currentCount = parseInt(commentCountElement.textContent);
+                commentCountElement.textContent = (currentCount + 1).toLocaleString();
             }
         }
     });
@@ -299,9 +317,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Fullscreen Video
-    shareVideoFullscreenBtn.addEventListener('click', () => {
-        if (shareVideo.requestFullscreen) { shareVideo.requestFullscreen(); }
-    });
+    if (shareVideoFullscreenBtn) {
+        shareVideoFullscreenBtn.addEventListener('click', () => {
+            if (shareVideo.requestFullscreen) { shareVideo.requestFullscreen(); }
+        });
+    }
 
     // Top Navigation Active State
     topNavLinks.forEach(link => {

@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Go-Pitch Pro</title>
-    <link rel="stylesheet" href="mainhome.css">
+    <link rel="stylesheet" href="css/mainhome.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-<!-- Bootstrap CSS and Icons -->
+    <!-- Bootstrap CSS and Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-
 </head>
 <body>
 
     <div class="app-container">
         <header class="top-nav-tiktok">
-            <a href="live-scores/Loading.html" class="top-nav-link active" data-target-page="live-score">Live score</a>
-            <a href="sports-streaming/index.html" class="top-nav-link " data-target-page="sports-streaming">Sports Streaming</a>
+            <a href="#" class="top-nav-link" data-target-page="live-score">Live score</a>
+            <a href="#" class="top-nav-link active" data-target-page="sports-streaming">Sports Streaming</a>
+            <!-- <div class="top-nav-icon-right">
+                <i class="fa-solid fa-search"></i>
+            </div> -->
         </header>
 
         <div class="video-feed-carousel">
             <div class="video-slide" data-video-id="video1">
-                <video class="feed-video" src="img/Messi.mp4" loop playsinline poster="https://via.placeholder.com/600x1000/0000FF/FFFFFF?text=Live+Match+1"></video>
+                <video class="feed-video" src="https://www.w3schools.com/html/mov_bbb.mp4" loop playsinline poster="https://via.placeholder.com/600x1000/0000FF/FFFFFF?text=Live+Match+1"></video>
                 <div class="video-overlay paused">
                     <i class="fa-solid fa-play play-pause-icon"></i>
                 </div>
@@ -51,11 +53,14 @@
                         <span class="username">Mustapha-001</span>
                     </div>
                     <button class="follow-btn">Follow</button>
+                    <p class="video-description">
+                        This is the description of the video. It will go below the user's name and follow button.
+                    </p>
                 </div>
             </div>
 
             <div class="video-slide" data-video-id="video2">
-                <video class="feed-video" src="img/Messi.mp4" loop playsinline poster="https://via.placeholder.com/600x1000/FF0000/FFFFFF?text=Live+Match+2"></video>
+                <video class="feed-video" src="https://www.w3schools.com/html/movie.mp4" loop playsinline poster="https://via.placeholder.com/600x1000/FF0000/FFFFFF?text=Live+Match+2"></video>
                 <div class="video-overlay paused">
                     <i class="fa-solid fa-play play-pause-icon"></i>
                 </div>
@@ -80,42 +85,13 @@
                         <span class="username">AthletePro</span>
                     </div>
                     <button class="follow-btn">Follow</button>
-                </div>
-            </div>
-            
-            <div class="video-slide" data-video-id="video2">
-                <video class="feed-video" src="img/Messi.mp4" loop playsinline poster="https://via.placeholder.com/600x1000/FF0000/FFFFFF?text=Live+Match+2"></video>
-                <div class="video-overlay paused">
-                    <i class="fa-solid fa-play play-pause-icon"></i>
-                </div>
-                <div class="heart-animation-container"></div>
-                <div class="side-action-bar">
-                    <div class="action-item heart-action-item">
-                        <i class="fa-regular fa-heart action-icon heart-icon"></i>
-                        <span class="action-count">543</span>
-                    </div>
-                    <div class="action-item comment-action-item">
-                        <i class="fa-solid fa-comment-dots action-icon comment-icon"></i>
-                        <span class="action-count">120</span>
-                    </div>
-                    <div class="action-item share-action-item">
-                        <i class="fa-solid fa-share action-icon share-icon"></i>
-                        <span class="action-count">250</span>
-                    </div>
-                </div>
-                <div class="user-profile-section">
-                    <div class="user-info">
-                        <img src="https://via.placeholder.com/40" alt="User Avatar" class="user-avatar">
-                        <span class="username">AthletePro</span>
-                    </div>
-                    <button class="follow-btn">Follow</button>
+                    <p class="video-description">
+                        This is a second video's description. It can be longer and will wrap to a new line.
+                    </p>
                 </div>
             </div>
         </div>
 
-
-
-        <!-- comment section design -->
         <div class="comments-overlay hidden">
             <div class="comments-header">
                 <h3 class="comments-title">683 comments</h3>
@@ -280,6 +256,6 @@
         </nav>
     </div>
 
-    <script src="mainhome.js"></script>
+    <script src="js/mainhome.js"></script>
 </body>
 </html>

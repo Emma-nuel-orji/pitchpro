@@ -30,14 +30,6 @@ body {
     position: relative;
 }
 
-.main-page-content {
-    padding: 20px;
-    text-align: center;
-    color: var(--light-text-color);
-    display: none; /* Hide placeholder content */
-}
-
-/* --- Utility Class for Hiding Elements --- */
 .hidden {
     display: none!important;
 }
@@ -81,6 +73,15 @@ body {
     height: 3px;
     background-color: var(--text-color);
     border-radius: 2px;
+}
+
+.top-nav-icon-right {
+    position: absolute;
+    right: 15px;
+    font-size: 1.5em;
+    color: var(--text-color);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* --- Main Video Feed (Vertical Carousel) --- */
@@ -195,6 +196,7 @@ body {
     align-items: flex-start;
     gap: 10px;
     z-index: 10;
+    max-width: 70%;
 }
 
 .user-info {
@@ -226,10 +228,20 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    margin-top: 5px;
 }
 
 .follow-btn:hover {
     background-color: #cc0000;
+}
+
+.video-description {
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--text-color);
+    margin: 5px 0 0 0;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 .heart-animation-container {
@@ -462,7 +474,6 @@ body {
     cursor: pointer;
 }
 
-/* --- Share Sheet Backdrop --- */
 .share-sheet-backdrop {
     position: fixed;
     top: 0;
@@ -473,7 +484,6 @@ body {
     z-index: 99;
 }
 
-/* --- Share Sheet Container (Bottom Sheet) --- */
 .share-sheet {
     position: fixed;
     bottom: 0;
@@ -692,7 +702,7 @@ body {
 .video-overlay-share.playing.play-icon {
     opacity: 0;
 }
-.pause-icon {
+.video-overlay-share.pause-icon {
     opacity: 0;
 }
 .video-overlay-share.playing.pause-icon {
