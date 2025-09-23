@@ -1,144 +1,242 @@
 <!DOCTYPE html>
 <html lang="en" class="transition-colors duration-300">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Settings - Pitch Pro</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Settings - Pitch Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        :root {
+            --light-bg: #FFFFFF;
+            --light-card-bg: #F1F5F9;
+            --light-text: #000000;
+            --dark-bg: #000000;
+            --dark-card-bg: #1F2937;
+            --dark-text: #FFFFFF;
+            --red-text: #DC2626;
+            --blue-accent: #007BFF;
+        }
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
-  <style>
-      .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 10;
-      background-color: #111;
-      padding: 8px 0;
-      display: flex;
-      justify-content: space-around;
-    }
-    .bottom-nav a {
-      color: #999;
-      text-decoration: none;
-    }
-    .bottom-nav a.active {
-      color: #007bff;
-    }
-  </style>
+        /* General Body and Text Styles for both themes */
+        body {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            font-family: sans-serif;
+        }
+       .dark body {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+       .text-red-600 {
+            color: var(--red-text);
+        }
+        
+        /* Top Bar Styles */
+       .top-bar-settings {
+            border-bottom: 1px solid #E2E8F0;
+        }
+       .dark.top-bar-settings {
+            border-bottom: 1px solid #374151;
+        }
+       .back-arrow-svg path,.menu-dots-svg path {
+            stroke: var(--light-text);
+        }
+       .dark.back-arrow-svg path,.dark.menu-dots-svg path {
+            stroke: var(--dark-text);
+        }
+        
+        /* Settings List Styles */
+       .settings-card {
+            background-color: var(--light-card-bg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+       .dark.settings-card {
+            background-color: var(--dark-card-bg);
+            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -2px rgba(255, 255, 255, 0.1);
+        }
+       .settings-item {
+            cursor: pointer;
+            padding: 1rem 0;
+            transition: background-color 0.2s ease-in-out;
+        }
+       .settings-item:not(:last-child) {
+            border-bottom: 1px solid #CBD5E1;
+        }
+       .dark.settings-item:not(:last-child) {
+            border-bottom: 1px solid #4B5563;
+        }
+       .settings-item:hover {
+            background-color: #E2E8F0;
+        }
+       .dark.settings-item:hover {
+            background-color: #374151;
+        }
+       .settings-item.link-item {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Bottom Nav Styles */
+       .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+            background-color: #111;
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+       .bottom-nav a {
+            color: #999;
+            text-decoration: none;
+        }
+       .bottom-nav a.active {
+            color: #007bff;
+        }
+    </style>
 </head>
 <body class="bg-white text-black font-sans transition-colors duration-300">
 
-  <!-- Top Bar -->
-  <div class="flex justify-between items-center px-4 py-4">
-    <button onclick="window.history.back()">
-      <svg class="w-6 h-6" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M15 18l-6-6 6-6"/>
-      </svg>
-    </button>
-    <h1 class="text-xl font-bold">Settings</h1>
-    <svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M10 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
-    </svg>
-  </div>
-
-  <!-- Settings List -->
-  <div class="bg-gray-200 rounded-2xl mx-5 p-5 shadow-md space-y-6">
-    
-    <a href="Support.html"><div class="flex justify-between items-center">
-      <p class="font-semibold">Help & Support</p>
-      <span>&gt;</span>
-    </div></a>
-<br>
-    <a class="pt-3" href="privacy.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Privacy</p>
-      <span>&gt;</span>
-    </div></a>
-<br>
-    <a href="Security.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Security</p>
-      <span>&gt;</span>
-    </div></a>
-<br>
-    <a href="Select-language.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Language</p>
-      <span>&gt;</span>
-    </div></a>
-
-
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Dark Mode</p>
-      <!-- Toggle -->
-      <label class="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" id="themeToggle" class="sr-only peer">
-        <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition-colors"></div>
-        <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-full"></div>
-      </label>
+    <div class="top-bar-settings flex justify-between items-center px-4 py-4 sticky top-0 z-10 bg-inherit">
+        <button onclick="window.history.back()">
+            <svg class="w-6 h-6 back-arrow-svg" fill="none" stroke="black" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+        <h1 class="text-xl font-bold">Settings</h1>
+        <svg class="w-6 h-6 menu-dots-svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm0 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3z" />
+        </svg>
     </div>
-<br>
-    <a class="pt5 justify-between" href="withdraw.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Wallet</p>
-      <span>&gt;</span>
-    </div></a>
-<br>
-    <a class="justify-between items-center" href="terms.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold">Terms and Policies</p>
-      <span>&gt;</span>
-    </div></a>
 
-<br>
-    <a href="mainhome.html"><div class="flex justify-between items-center">
-      <p class="font-semibold">Switch Account</p>
-      <span>&gt;</span>
-    </div></a>
-<br>
-    <a href="mainhome.html">
-    <div class="flex justify-between items-center">
-      <p class="font-semibold text-red-600">Log Out</p>
-    </div></a>
-  </div>
+    <div class="settings-card rounded-2xl mx-5 p-5 shadow-md flex flex-col gap-3">
+        
+        <div>
+            <a href="Support.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Help & Support</p>
+                <span>&gt;</span>
+            </a>
+            <a href="privacy.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Privacy</p>
+                <span>&gt;</span>
+            </a>
+            <a href="Security.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Security</p>
+                <span>&gt;</span>
+            </a>
+            <a href="Select-language.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Language</p>
+                <span>&gt;</span>
+            </a>
+            <a href="terms.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Terms and Policies</p>
+                <span>&gt;</span>
+            </a>
+        </div>
 
-   <nav class="bottom-nav">
-    <a href="mainhome.html"><i class="bi bi-house-door-fill fs-4"></i></a>
-    <a href="search.html"><i class="bi bi-search fs-4"></i></a>
-    <a href="post-image.html"><i class="bi bi-plus-circle-fill fs-4"></i></a>
-    <a href="inbox.html"><i class="bi bi-chat-left-dots fs-4"></i></a>
-    <a href="profile.html" class="active"><i class="bi bi-person-fill fs-4"></i></a>
-  </nav>
+        <div class="settings-item flex justify-between items-center">
+            <p class="font-semibold m-0">Dark Mode</p>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="themeToggle" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:bg-black transition-colors"></div>
+                <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform peer-checked:translate-x-full"></div>
+            </label>
+        </div>
 
-  <script>
-    // Theme toggling logic
-    const toggle = document.getElementById("themeToggle");
-    const htmlEl = document.documentElement;
+        <div>
+            <a href="withdraw.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Wallet</p>
+                <span>&gt;</span>
+            </a>
+            <a href="mainhome.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold m-0">Switch Account</p>
+                <span>&gt;</span>
+            </a>
+            <a href="mainhome.html" class="settings-item link-item flex justify-between items-center">
+                <p class="font-semibold text-red-600 m-0">Log Out</p>
+                <span>&gt;</span>
+            </a>
+        </div>
+        
+    </div>
 
-    // Apply stored theme on page load
-    if (localStorage.getItem("theme") === "dark") {
-      htmlEl.classList.add("dark");
-      document.body.classList.replace("bg-white", "bg-black");
-      document.body.classList.replace("text-black", "text-white");
-      toggle.checked = true;
-    }
+    <nav class="bottom-nav">
+        <a href="mainhome.html"><i class="bi bi-house-door-fill fs-4"></i></a>
+        <a href="search.html"><i class="bi bi-search fs-4"></i></a>
+        <a href="post-image.html"><i class="bi bi-plus-circle-fill fs-4"></i></a>
+        <a href="inbox.html"><i class="bi bi-chat-left-dots fs-4"></i></a>
+        <a href="profile.html" class="active"><i class="bi bi-person-fill fs-4"></i></a>
+    </nav>
 
-    toggle.addEventListener("change", () => {
-      if (toggle.checked) {
-        htmlEl.classList.add("dark");
-        document.body.classList.replace("bg-white", "bg-black");
-        document.body.classList.replace("text-black", "text-white");
-        localStorage.setItem("theme", "dark");
-      } else {
-        htmlEl.classList.remove("dark");
-        document.body.classList.replace("bg-black", "bg-white");
-        document.body.classList.replace("text-white", "text-black");
-        localStorage.setItem("theme", "light");
-      }
-    });
-  </script>
+    <script>
+        const themeToggle = document.getElementById("themeToggle");
+        const htmlEl = document.documentElement;
+        const bodyEl = document.body;
+        const backArrowSvg = document.querySelector('.back-arrow-svg path');
+        const menuDotsSvg = document.querySelector('.menu-dots-svg path');
+        const settingsCard = document.querySelector('.settings-card');
+        const allLinks = document.querySelectorAll('.settings-item.link-item');
+        const logoutText = document.querySelector('.text-red-600');
+
+        // Apply stored theme on page load
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme === "dark") {
+            htmlEl.classList.add("dark");
+            themeToggle.checked = true;
+            updateSvgColors();
+            updateColorsForTheme('dark');
+        } else {
+            updateColorsForTheme('light');
+        }
+
+        function updateColorsForTheme(theme) {
+            if (theme === 'dark') {
+                bodyEl.classList.replace("bg-white", "bg-black");
+                bodyEl.classList.replace("text-black", "text-white");
+                settingsCard.classList.add('dark');
+                backArrowSvg.setAttribute('stroke', 'white');
+                menuDotsSvg.setAttribute('fill', 'white');
+                allLinks.forEach(link => {
+                    link.classList.add('dark');
+                });
+                logoutText.style.color = 'var(--red-text)';
+            } else {
+                bodyEl.classList.replace("bg-black", "bg-white");
+                bodyEl.classList.replace("text-white", "text-black");
+                settingsCard.classList.remove('dark');
+                backArrowSvg.setAttribute('stroke', 'black');
+                menuDotsSvg.setAttribute('fill', 'black');
+                allLinks.forEach(link => {
+                    link.classList.remove('dark');
+                });
+                logoutText.style.color = 'var(--red-text)';
+            }
+        }
+        
+        function updateSvgColors() {
+            const isDarkMode = htmlEl.classList.contains("dark");
+            const newStroke = isDarkMode? 'white' : 'black';
+            const newFill = isDarkMode? 'white' : 'black';
+            if (backArrowSvg) backArrowSvg.setAttribute('stroke', newStroke);
+            if (menuDotsSvg) menuDotsSvg.setAttribute('fill', newFill);
+        }
+
+        themeToggle.addEventListener("change", () => {
+            if (themeToggle.checked) {
+                htmlEl.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+                updateColorsForTheme('dark');
+            } else {
+                htmlEl.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+                updateColorsForTheme('light');
+            }
+        });
+
+    </script>
 
 </body>
 </html>
