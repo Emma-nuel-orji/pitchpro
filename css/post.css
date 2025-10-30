@@ -11,15 +11,6 @@
     --icon-bg-circle: #3A3A3A;
 }
 
-a {
-    text-decoration: none; /* Removes the underline from all links */
-    color: inherit; /* Prevents the link from being default blue/purple */
-}
-
-.username {
-    color: black; /* Sets the text color to black */
-    font-weight: bold; /* Makes the text bold */
-}
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -29,13 +20,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow: hidden;
+    height: 100vh;
+    width: 100vw;
 }
 
 .app-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
     position: relative;
 }
 
@@ -50,11 +42,21 @@ body {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 15px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
     z-index: 20;
+    box-sizing: border-box;
+}
+
+.top-nav-link-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .top-nav-link {
@@ -85,12 +87,9 @@ body {
 }
 
 .top-nav-icon-right {
-    position: absolute;
-    right: 15px;
     font-size: 1.5em;
     color: var(--text-color);
-    top: 50%;
-    transform: translateY(-50%);
+    cursor: pointer;
 }
 
 /* --- Main Video Feed (Vertical Carousel) --- */
@@ -711,7 +710,7 @@ body {
 .video-overlay-share.playing.play-icon {
     opacity: 0;
 }
-.video-overlay-share.pause-icon {
+.pause-icon {
     opacity: 0;
 }
 .video-overlay-share.playing.pause-icon {

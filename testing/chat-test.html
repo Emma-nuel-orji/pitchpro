@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DM - PitchPro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+      .dm-header {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
+      .dm-header.back-btn,
+      .dm-header.call-btn {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+      .dm-header.user-info {
+            flex: 1;
+        }
+
+      .dm-header.user-name {
+            font-weight: 600;
+            margin: 0;
+            line-height: 1;
+        }
+
+      .dm-header.user-status {
+            font-size: 0.875rem;
+            color: #10b981;
+        }
+
+      .dm-header img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+        }
+
+      .dm-body {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+      .message-container {
+            display: flex;
+        }
+
+      .sent {
+            justify-content: flex-end;
+        }
+
+      .received {
+            justify-content: flex-start;
+        }
+
+      .message-bubble {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+      .sent.message-bubble {
+            background-color: #007bff;
+            color: white;
+            border-bottom-right-radius: 0;
+        }
+
+      .received.message-bubble {
+            background-color: #e2e8f0;
+            color: black;
+            border-bottom-left-radius: 0;
+        }
+
+      .dm-input-area {
+            background-color: #1a1a1a;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 20;
+        }
+
+      .dm-input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border-radius: 1.5rem;
+            border: none;
+            outline: none;
+            background-color: #374151;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+      .send-button {
+            background-color: #6e8efb;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <div class="dm-header">
+        <a href="inbox.html" class="back-btn">
+            <i class="bi bi-arrow-left"></i>
+        </a>
+        <img src="img/profile/prof1.jpg" class="w-10 h-10 rounded-full" alt="User Avatar">
+        <div class="user-info">
+            <p class="user-name">Jock Stein</p>
+            <p class="user-status">Online</p>
+        </div>
+        <div class="flex gap-4">
+            <a href="#" class="call-btn" onclick="alert('Starting audio call with Jock Stein...'); return false;">
+                <i class="bi bi-telephone"></i>
+            </a>
+            <a href="#" class="call-btn" onclick="alert('Starting video call with Jock Stein...'); return false;">
+                <i class="bi bi-camera-video"></i>
+            </a>
+        </div>
+    </div>
+
+    <div id="message-list" class="dm-body">
+        <div class="message-container sent">
+            <p class="message-bubble">Hello Mr Stacy...</p>
+        </div>
+        <div class="message-container received">
+            <p class="message-bubble">Good Morning Jock...</p>
+        </div>
+    </div>
+
+    <div class="dm-input-area">
+        <form id="message-form" class="flex flex-grow items-center gap-2">
+            <input type="text" id="message-input" placeholder="Start a message..." class="dm-input">
+            <button type="submit" class="send-button">
+                <i class="bi bi-send-fill"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('message-form');
+            const input = document.getElementById('message-input');
+            const messageList = document.getElementById('message-list');
+        
+            const addMessage = (text, type) => {
+                const messageContainer = document.createElement('div');
+                messageContainer.classList.add('message-container', type);
+        
+                const messageBubble = document.createElement('p');
+                messageBubble.classList.add('message-bubble');
+                messageBubble.textContent = text;
+        
+                messageContainer.appendChild(messageBubble);
+                messageList.appendChild(messageContainer);
+        
+                messageList.scrollTop = messageList.scrollHeight; // Auto-scroll to bottom
+            };
+        
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent page reload
+                const messageText = input.value.trim();
+        
+                if (messageText!== '') {
+                    addMessage(messageText, 'sent');
+                    input.value = ''; // Clear the input field
+                }
+            });
+        });
+    </script>
+</body>

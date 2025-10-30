@@ -287,3 +287,364 @@
   </script>
 </body>
 </html>
+
+<!-- post upload new  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PitchPro - Create</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #000000;
+            --text-color: #FFFFFF;
+            --light-text-color: #AAAAAA;
+            --red-accent: #FF0000;
+            --blue-accent: #007BFF;
+            --button-bg: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+       .hidden {
+            display: none!important;
+        }
+
+       .camera-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--dark-bg);
+        }
+
+       .live-video-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+        }
+
+       .ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+       .top-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+       .back-btn {
+            background: var(--button-bg);
+            color: var(--text-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+       .add-sound-btn {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 0.9em;
+            cursor: pointer;
+            border: none;
+        }
+
+       .camera-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+       .camera-action-btn {
+            background-color: var(--button-bg);
+            color: var(--text-color);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+       .bottom-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 15px;
+        }
+
+       .record-video-btn-container {
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+       .record-btn {
+            background-color: var(--text-color);
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+       .record-btn:active {
+            transform: scale(0.9);
+        }
+
+       .record-btn i {
+            color: var(--dark-bg);
+            font-size: 2.5em;
+        }
+
+       .post-tabs {
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+        }
+
+       .tab-item {
+            cursor: pointer;
+        }
+
+       .tab-item.active {
+            font-weight: 700;
+            position: relative;
+        }
+
+       .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background-color: var(--text-color);
+            border-radius: 1px;
+        }
+
+       .local-upload-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid var(--text-color);
+            position: relative;
+            cursor: pointer;
+        }
+
+       .local-upload-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+       .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--text-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="camera-container">
+        <video class="live-video-feed hidden" autoplay playsinline></video>
+        <div class="loading-spinner"></div>
+
+        <div class="ui-overlay hidden">
+            <div class="top-controls">
+                <button class="back-btn" onclick="history.back()">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button class="add-sound-btn" id="add-sound-btn">
+                    <i class="fa-solid fa-music"></i> Add Sound
+                </button>
+                <div class="camera-actions">
+                    <button class="camera-action-btn" id="camera-flip-btn">
+                        <i class="fa-solid fa-sync-alt"></i>
+                    </button>
+                    <button class="camera-action-btn" id="flash-toggle-btn" style="display:none;">
+                        <i class="fa-solid fa-bolt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bottom-controls">
+                <div class="post-tabs">
+                    <span class="tab-item">Post</span>
+                    <span class="tab-item">Story</span>
+                    <span class="tab-item active">Video</span>
+                </div>
+
+                <div class="record-video-btn-container">
+                    <button class="record-btn" id="record-btn">
+                        <i class="fa-solid fa-video"></i>
+                    </button>
+                </div>
+
+                <div class="local-upload-btn" id="local-upload-btn">
+                    <img src="https://via.placeholder.com/40" alt="Video thumbnail">
+                </div>
+                <input type="file" id="file-input" accept="video/*,image/*" class="hidden">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.live-video-feed');
+            const spinner = document.querySelector('.loading-spinner');
+            const uiOverlay = document.querySelector('.ui-overlay');
+            const cameraFlipBtn = document.getElementById('camera-flip-btn');
+            const flashToggleBtn = document.getElementById('flash-toggle-btn');
+            const addSoundBtn = document.getElementById('add-sound-btn');
+            const localUploadBtn = document.getElementById('local-upload-btn');
+            const fileInput = document.getElementById('file-input');
+
+            let currentStream;
+            let currentFacingMode = 'user';
+            let isFlashOn = false;
+
+            // --- Camera and Flashlight functionality ---
+            async function getCameraStream(facingMode) {
+                spinner.classList.remove('hidden');
+                uiOverlay.classList.add('hidden');
+                video.classList.add('hidden');
+
+                if (currentStream) {
+                    currentStream.getTracks().forEach(track => track.stop());
+                }
+
+                const constraints = {
+                    video: {
+                        facingMode: facingMode
+                    },
+                    audio: true
+                };
+
+                try {
+                    currentStream = await navigator.mediaDevices.getUserMedia(constraints);
+                    video.srcObject = currentStream;
+                    video.onloadedmetadata = () => {
+                        video.play();
+                        spinner.classList.add('hidden');
+                        uiOverlay.classList.remove('hidden');
+                        video.classList.remove('hidden');
+                        checkFlashlightSupport();
+                    };
+                } catch (err) {
+                    console.error("Error accessing the camera:", err);
+                    alert("Could not access camera. Please check permissions.");
+                    spinner.classList.add('hidden');
+                }
+            }
+
+            // Check if flashlight is supported and show button if it is
+            async function checkFlashlightSupport() {
+                const track = currentStream.getVideoTracks();
+                const capabilities = track.getCapabilities();
+                if (capabilities.torch) {
+                    flashToggleBtn.style.display = 'flex';
+                } else {
+                    flashToggleBtn.style.display = 'none';
+                }
+            }
+
+            // --- Event Listeners ---
+            cameraFlipBtn.addEventListener('click', () => {
+                currentFacingMode = (currentFacingMode === 'user')? 'environment' : 'user';
+                getCameraStream(currentFacingMode);
+            });
+
+            flashToggleBtn.addEventListener('click', () => {
+                isFlashOn =!isFlashOn;
+                const track = currentStream.getVideoTracks();
+                track.applyConstraints({ advanced: [{ torch: isFlashOn }] })
+                   .then(() => {
+                        console.log(`Flashlight is now ${isFlashOn? 'ON' : 'OFF'}`);
+                    })
+                   .catch(err => {
+                        console.error("Failed to toggle flashlight:", err);
+                    });
+            });
+
+            addSoundBtn.addEventListener('click', () => {
+                alert("This button would open a sound library. The Web Audio API would be used to mix the video's audio with a selected music track.");
+            });
+
+            localUploadBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files;
+                if (file) {
+                    alert(`Selected file: ${file.name}`);
+                    // You would typically handle the file upload logic here
+                }
+            });
+
+            // Start with the front camera on page load
+            getCameraStream(currentFacingMode);
+        });
+    </script>
+</body>
+</html>
+
+
+
